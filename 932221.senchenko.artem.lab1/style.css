@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header, .footer {
+    background: green;
+    color: white;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-area {
+    background: blue;
+    color: white;
+    padding: 20px;
+    min-height: 500px;
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+.square-box {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    border: 5px solid white;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin: 0 16px 20px 0;
+}
+
+.data-table {
+    float: right;
+    width: 160px;
+    border: 1px solid;
+    height: 70px;
+}
+
+.text-styles {
+    position: relative;
+}
