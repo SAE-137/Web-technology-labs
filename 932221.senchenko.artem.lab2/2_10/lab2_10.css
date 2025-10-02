@@ -1,0 +1,31 @@
+* {
+  margin: 5px;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.float-panel {
+  width: 150px;
+  height: 70px;
+  background: aquamarine;
+  float: left;
+  margin: 10px 10px 10px 20px;
+  font-size: 12px;
+  color: #000;
+  text-align: left;
+}
+
+.clear-panel {
+  background: bisque;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  clear: both;
+  font-size: 12px;
+  color: #000;
+  text-align: left;
+  box-sizing: border-box;
+}

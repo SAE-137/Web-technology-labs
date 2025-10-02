@@ -1,0 +1,72 @@
+* {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 5px;
+}
+
+.wrapper {
+  background: aqua;
+  border: 2px solid green;
+  text-align: left;
+  font-size: 12px;
+  color: #000;
+  margin: 0 auto;
+}
+
+.nav-list {
+  list-style-position: inside;
+}
+
+.nav-list li {
+  font-size: 12px;
+  color: #000;
+}
+
+@media screen and (min-width: 701px) {
+  .wrapper {
+    display: flex;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+
+  .menu-panel {
+    background: bisque;
+    max-height: 80px;
+    width: 300px;
+    text-align: left;
+  }
+
+  .content-block {
+    background: darkgray;
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    display: block;
+  }
+
+  .menu-panel {
+    background: bisque;
+    text-align: left;
+    font-size: 12px;
+    color: #000;
+  }
+
+  .nav-list li {
+    display: inline;
+    list-style-type: none;
+    margin-right: 10px;
+  }
+
+  .content-block {
+    background: darkgray;
+  }
+}

@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  overflow: auto;
+}
+
+.wrapper {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.text-block {
+  font-size: 12px;
+  background: blue;
+  color: #fff;
+  width: 500px;
+  max-height: 500px;
+  margin: 10px auto;
+  text-align: left;
+  overflow-y: auto;
+}
