@@ -1,0 +1,39 @@
+* {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 5px;
+}
+
+.grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.grid-item {
+  background: aquamarine;
+  width: 140px;
+  height: 70px;
+  margin: 10px;
+  display: inline-block;
+  font-size: 12px;
+  color: #000;
+  text-align: left;
+}
+
+.bottom-section {
+  background: bisque;
+  text-align: left;
+  font-size: 12px;
+  color: #000;
+}
+
+@media screen and (max-width: 600px) {
+  .grid-item {
+    width: 200px;
+  }
+}

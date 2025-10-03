@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.wrapper {
+  margin: 10px auto;
+  max-width: 500px;
+}
+
+.content {
+  font-size: 12px;
+  background: blue;
+  color: #fff;
+  max-height: 500px;
+  text-align: left;
+}
