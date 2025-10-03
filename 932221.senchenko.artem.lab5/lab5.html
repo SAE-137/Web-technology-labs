@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Banners</title>
+  <link rel="stylesheet" href="lab5.css">
+</head>
+<body>
+  <div class="box-stack">
+    <div class="news-box" data-news="1">
+      <div class="news-label">Новость 1</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <button class="action-btn" onclick="showBanner(1)">Открыть всплывающее окно</button>
+      <div class="bottom-line"></div>
+    </div>
+    <div class="news-box" data-news="2">
+      <div class="news-label">Новость 2</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <button class="action-btn" onclick="showBanner(2)">Открыть всплывающее окно</button>
+      <div class="bottom-line"></div>
+    </div>
+    <div class="news-box" data-news="3">
+      <div class="news-label">Новость 3</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <button class="action-btn" onclick="showBanner(3)">Открыть всплывающее окно</button>
+      <div class="bottom-line"></div>
+    </div>
+  </div>
+  <div id="popup" class="popup"></div>
+  <script src="script.js"></script>
+</body>
+</html>
