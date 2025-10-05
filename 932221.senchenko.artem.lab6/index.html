@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend Task 6</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="button-container">
+    <button class="control-btn" onclick="setLayout('left')">Левая колонка</button>
+    <button class="control-btn active" onclick="setLayout('both')">Обе две</button>
+    <button class="control-btn" onclick="setLayout('right')">Правая колонка</button>
+  </div>
+  
+  <div class="image-container">
+    <div class="left-image blue-square">
+      <img src="cat.jpg" alt="Cat">
+    </div>
+    <div class="right-image green-square">
+      <img src="dog.jpg" alt="Dog">
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
