@@ -1,14 +1,52 @@
-function showBanner(newsId) {
-  const popup = document.getElementById('popup');
-  popup.innerHTML = `<h2>Новость ${newsId}</h2><p>Новость ${newsId}<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam hic, ipsa, ullam, cupiditate eveniet at voluptate corrupti commodi nobis ratione voluptatem! Vel animi totam cupiditate doloribus ad ab exercitationem officia eveniet impedit? Deleniti quasi nisi consectetur perspiciatis quibusdam nostrum, enim perferendis nam, magni molestias recusandae id libero vitae, repudiandae praesentium.</p>`;
-  popup.style.display = 'block';
-  document.body.classList.add('dimmed');
+let currentPopupHandler = null;
 
-  document.addEventListener('click', function closePopup(e) {
-    if (!popup.contains(e.target) && e.target.tagName !== 'BUTTON') {
-      popup.style.display = 'none';
-      document.body.classList.remove('dimmed');
-      document.removeEventListener('click', closePopup);
-    }
+function showDetail(newsId) {
+
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.style.display = 'none';
   });
+
+ 
+  const modal = document.getElementById('modal' + newsId);
+  if (modal) {
+    modal.style.display = 'block';
+  }
+
+
+  document.querySelectorAll('.article').forEach(article => {
+    article.style.opacity = '0.3';
+  });
+
+  
+  if (currentPopupHandler) {
+    document.removeEventListener('click', currentPopupHandler);
+  }
+  currentPopupHandler = (event) => {
+    const modals = document.querySelectorAll('.modal');
+    let shouldClose = true;
+    modals.forEach(m => {
+      if (m.style.display === 'block' && (m.contains(event.target) || event.target.closest('button'))) {
+        shouldClose = false;
+      }
+    });
+    if (shouldClose) {
+      hideDetail();
+    }
+  };
+  document.addEventListener('click', currentPopupHandler);
+}
+
+function hideDetail() {
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.style.display = 'none';
+  });
+
+  document.querySelectorAll('.article').forEach(article => {
+    article.style.opacity = '1';
+  });
+
+  if (currentPopupHandler) {
+    document.removeEventListener('click', currentPopupHandler);
+    currentPopupHandler = null;
+  }
 }

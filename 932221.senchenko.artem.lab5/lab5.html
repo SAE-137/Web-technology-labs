@@ -1,32 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>News Banners</title>
+  <title>Новости</title>
   <link rel="stylesheet" href="lab5.css">
 </head>
 <body>
-  <div class="box-stack">
-    <div class="news-box" data-news="1">
-      <div class="news-label">Новость 1</div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
-      <button class="action-btn" onclick="showBanner(1)">Открыть всплывающее окно</button>
-      <div class="bottom-line"></div>
-    </div>
-    <div class="news-box" data-news="2">
-      <div class="news-label">Новость 2</div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
-      <button class="action-btn" onclick="showBanner(2)">Открыть всплывающее окно</button>
-      <div class="bottom-line"></div>
-    </div>
-    <div class="news-box" data-news="3">
-      <div class="news-label">Новость 3</div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
-      <button class="action-btn" onclick="showBanner(3)">Открыть всплывающее окно</button>
-      <div class="bottom-line"></div>
+  <div class="article" id="article1">
+    <h3>Новость 1</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+    <button onclick="showDetail(1)">Открыть всплывающее окно</button>
+  </div>
+
+  <div class="article" id="article2">
+    <h3>Новость 2</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+    <button onclick="showDetail(2)">Открыть всплывающее окно</button>
+  </div>
+
+  <div class="article" id="article3">
+    <h3>Новость 3</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+    <button onclick="showDetail(3)">Открыть всплывающее окно</button>
+  </div>
+
+  <div class="modal" id="modal1">
+    <div class="modal-inner">
+      <h1>Новость 1</h1>
+      <p>Новость 1: Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam hic, ipsa, ullam, cupiditate eveniet at voluptate corrupti commodi nobis ratione voluptatem! Vel animi totam cupiditate doloribus ad ab exercitationem officia eveniet impedit? Deleniti quasi nisi consectetur perspiciatis quibusdam nostrum, enim perferendis nam, magni molestias recusandae id libero vitae, repudiandae praesentium.</p>
     </div>
   </div>
-  <div id="popup" class="popup"></div>
+
+  <div class="modal" id="modal2">
+    <div class="modal-inner">
+      <h1>Новость 2</h1>
+      <p>Новость 2: Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam hic, ipsa, ullam, cupiditate eveniet at voluptate corrupti commodi nobis ratione voluptatem! Vel animi totam cupiditate doloribus ad ab exercitationem officia eveniet impedit? Deleniti quasi nisi consectetur perspiciatis quibusdam nostrum, enim perferendis nam, magni molestias recusandae id libero vitae, repudiandae praesentium.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal3">
+    <div class="modal-inner">
+      <h1>Новость 3</h1>
+      <p>Новость 3: Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam hic, ipsa, ullam, cupiditate eveniet at voluptate corrupti commodi nobis ratione voluptatem! Vel animi totam cupiditate doloribus ad ab exercitationem officia eveniet impedit? Deleniti quasi nisi consectetur perspiciatis quibusdam nostrum, enim perferendis nam, magni molestias recusandae id libero vitae, repudiandae praesentium.</p>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
