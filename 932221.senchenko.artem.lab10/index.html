@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Магический Фокус</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="curtain" onclick="liftCurtain()"></div>
+  <div class="lamp" onmousedown="toggleSwitch(true)" onmouseup="toggleSwitch(false)" onclick="toggleLight()"></div>
+  <div class="light"></div>
+  <div class="hat">
+    <div class="rabbit" onclick="switchCharacters()"></div>
+    <div class="dove" onclick="switchCharacters()"></div>
+  </div>
+  <img src="волшебник.png" alt="Волшебник" class="magician">
+  <script src="scripts.js"></script>
+</body>
+</html>
