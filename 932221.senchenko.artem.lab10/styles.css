@@ -8,6 +8,7 @@ body {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  background-color: #000;
 }
 
 .curtain {
@@ -19,6 +20,7 @@ body {
   background: url('занавес.png') no-repeat center bottom;
   background-size: cover;
   transition: transform 0.2s ease, transform 1s ease;
+  z-index: 20; /* Кулисы поверх всех объектов */
 }
 
 .curtain:hover {
@@ -39,10 +41,11 @@ body {
   background: url('лампа.png') no-repeat center;
   background-size: contain;
   z-index: 10;
+  opacity: 0; /* Скрыт до поднятия кулис */
 }
 
 .lamp.switched {
-  background: url('лампа.png') no-repeat center; 
+  background: url('лампа.png') no-repeat center;
   background-size: contain;
   transition: background-image 0.1s ease;
 }
@@ -64,7 +67,7 @@ body {
 
 .light.on {
   opacity: 0.5;
-  pointer-events: none; /* Позволяет клики проходить через свет к кролику */
+  pointer-events: none;
 }
 
 .hat {
@@ -76,7 +79,13 @@ body {
   height: 100px;
   background: url('шляпа.png') no-repeat center;
   background-size: contain;
+  opacity: 0; /* Скрыт до поднятия кулис */
   z-index: 10;
+  transition: opacity 0.2s ease;
+}
+
+.hat.visible {
+  opacity: 1;
 }
 
 .rabbit, .dove {
@@ -87,7 +96,8 @@ body {
   width: 80px;
   height: 100px;
   background-size: contain;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.2s ease;
+  opacity: 0; /* Скрыт до поднятия кулис */
 }
 
 .rabbit {
@@ -97,6 +107,7 @@ body {
 
 .rabbit.hidden {
   transform: translateX(-50%) translateY(100px);
+  opacity: 0;
 }
 
 .dove {
@@ -106,6 +117,12 @@ body {
 
 .dove.visible {
   transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.dove.hidden {
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
 }
 
 .magician {
@@ -117,4 +134,5 @@ body {
   background: url('волшебник.png') no-repeat center;
   background-size: contain;
   z-index: 15;
+  opacity: 0; /* Скрыт до поднятия кулис */
 }

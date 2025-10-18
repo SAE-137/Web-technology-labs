@@ -5,15 +5,15 @@
   <title>Магический Фокус</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="curtain" onclick="liftCurtain()"></div>
-  <div class="lamp" onmousedown="toggleSwitch(true)" onmouseup="toggleSwitch(false)" onclick="toggleLight()"></div>
+<body onclick="liftCurtain()">
+  <div class="curtain"></div>
+  <div class="lamp" onmousedown="toggleSwitch(true)" onmouseup="toggleSwitch(false)" onclick="toggleLight(event)"></div>
   <div class="light"></div>
   <div class="hat">
-    <div class="rabbit" onclick="switchCharacters()"></div>
-    <div class="dove" onclick="switchCharacters()"></div>
+    <div class="rabbit" onclick="switchCharacters(event)"></div>
+    <div class="dove" onclick="switchCharacters(event)"></div>
   </div>
   <img src="волшебник.png" alt="Волшебник" class="magician">
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
