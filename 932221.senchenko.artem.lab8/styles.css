@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+#container {
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 3px;
+  margin-right: 3px;
+  border: 1px solid #aaa;
+}
+
+button {
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.controls {
+  margin-top: 8px;
+}
+
+#output {
+  margin-top: 10px;
+  font-family: monospace;
+}
