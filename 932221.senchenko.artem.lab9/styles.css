@@ -1,85 +1,80 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    background: #f9f9fb;
 }
 
-.calculator {
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 280px;
+.calc-container {
+    width: 340px;
+    border: 3px solid #5d8ff0;
+    border-radius: 8px;
+    padding: 14px;
+    background: #fdfdff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-#display {
-  width: 100%;
-  height: 50px;
-  font-size: 24px;
-  text-align: right;
-  padding: 0 10px;
-  margin-bottom: 10px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
+.output-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 6px 8px;
+    margin-bottom: 12px;
+    min-height: 42px;
+    border: 1px solid #333;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.prev {
+    font-size: 16px;
+    color: #777;
+    min-height: 20px;
 }
 
-.row {
-  display: flex;
-  gap: 5px;
+.curr {
+    font-size: 26px;
+    color: #000;
+    font-weight: 500;
 }
 
-.btn {
-  flex: 1;
-  height: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  border: 1px solid #000;
-  background-color: #e0e0e0;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s;
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
 }
 
-.btn:hover {
-  background-color: #d0d0d0;
+.keypad button {
+    padding: 16px 8px;
+    font-size: 22px;
+    font-weight: 600;
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #111;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.05s;
 }
 
-.btn:active {
-  background-color: #c0c0c0;
+.keypad button:active {
+    transform: scale(0.98);
 }
 
-.btn.equals {
-  background-color: #ff9500;
-  color: #fff;
-  font-size: 22px;
+.keypad button:hover {
+    background: #d0d0d0;
 }
 
-.btn.equals:hover {
-  background-color: #e68900;
+.wide {
+    grid-column: span 2;
 }
 
-.btn.zero {
-  flex: 2;
-}
-
-.zero {
-  font-size: 22px;
+.tall {
+    grid-row: span 2;
 }

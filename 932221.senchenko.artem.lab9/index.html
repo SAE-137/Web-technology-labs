@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Практика 10 - Калькулятор</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" readonly>
-    <div class="buttons">
-      <div class="row">
-        <button class="btn" onclick="clearDisplay()">C</button>
-        <button class="btn" onclick="appendToDisplay('/')">/</button>
-      </div>
-      <div class="row">
-        <button class="btn" onclick="appendToDisplay('7')">7</button>
-        <button class="btn" onclick="appendToDisplay('8')">8</button>
-        <button class="btn" onclick="appendToDisplay('9')">9</button>
-        <button class="btn" onclick="appendToDisplay('*')">*</button>
-      </div>
-      <div class="row">
-        <button class="btn" onclick="appendToDisplay('4')">4</button>
-        <button class="btn" onclick="appendToDisplay('5')">5</button>
-        <button class="btn" onclick="appendToDisplay('6')">6</button>
-        <button class="btn" onclick="appendToDisplay('-')">-</button>
-      </div>
-      <div class="row">
-        <button class="btn" onclick="appendToDisplay('1')">1</button>
-        <button class="btn" onclick="appendToDisplay('2')">2</button>
-        <button class="btn" onclick="appendToDisplay('3')">3</button>
-        <button class="btn equals" onclick="calculate()" rowspan="2">=</button>
-      </div>
-      <div class="row">
-        <button class="btn zero" onclick="appendToDisplay('0')" colspan="2">0</button>
-        <button class="btn" onclick="appendToDisplay('.')">.</button>
-      </div>
-    </div>
-  </div>
-  <script src="scripts.js"></script>
+    <main class="calc-container">
+        <section class="output-panel">
+            <div id="prev-operand" class="prev"></div>
+            <div id="curr-operand" class="curr">0</div>
+        </section>
+
+        <section class="keypad">
+            <button data-action="number" data-value="7">7</button>
+            <button data-action="number" data-value="8">8</button>
+            <button data-action="number" data-value="9">9</button>
+            <button data-action="operation" data-op="/">/</button>
+            <button data-action="clear">C</button>
+
+            <button data-action="number" data-value="4">4</button>
+            <button data-action="number" data-value="5">5</button>
+            <button data-action="number" data-value="6">6</button>
+            <button data-action="operation" data-op="*">*</button>
+            <button data-action="backspace">←</button>
+
+            <button data-action="number" data-value="1">1</button>
+            <button data-action="number" data-value="2">2</button>
+            <button data-action="number" data-value="3">3</button>
+            <button data-action="operation" data-op="-">-</button>
+            <button data-action="equals" class="tall">=</button>
+
+            <button data-action="number" data-value="0" class="wide">0</button>
+            <button data-action="decimal">.</button>
+            <button data-action="operation" data-op="+">+</button>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
