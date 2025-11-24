@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>PassUsingViewBag</h2>
+
+Rand Value First : @ViewBag.A
+<br />
+Rand Value Second : @ViewBag.B
+<br />
+
+Add :
+<br />
+@ViewBag.A + @ViewBag.B = @ViewBag.Add
+<br />
+
+Sub :
+<br />
+@ViewBag.A - @ViewBag.B = @ViewBag.Sub
+<br />
+
+Mult :
+<br />
+@ViewBag.A * @ViewBag.B = @ViewBag.Mult
+<br />
+
+Div :
+<br />
+@if (ViewBag.Div == null)
+{
+    @:@ViewBag.A / @ViewBag.B = деление на 0
+}
+else
+{
+    @:@ViewBag.A / @ViewBag.B = @ViewBag.Div
+}
+<br />

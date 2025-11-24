@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebApplication2.Services.ICalcService
+
+
+<h2>AccessServiceDirectly</h2>
+
+Rand Value First : @Model.A <br />
+Rand Value Second : @Model.B <br />
+
+Add : <br />
+@Model.A + @Model.B = @Model.Add() <br />
+
+Sub : <br />
+@Model.A - @Model.B = @Model.Sub() <br />
+
+Mult : <br />
+@Model.A * @Model.B = @Model.Mult() <br />
+
+Div : <br />
+@if (Model.Div() == null)
+{
+    @:@Model.A / @Model.B = деление на 0
+}
+else
+{
+    @:@Model.A / @Model.B = @Model.Div()
+}
+<br />
