@@ -1,17 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Backend3.Models.QuizModel
+﻿@model Backend3.Models.QuizModel
 
 <h2>Quiz results</h2>
 
 <p>Right answers @Model.CorrectCount out 4</p>
 
 <ol>
-    @foreach (var item in Model.History)
+    @foreach (var row in Model.History)
     {
-        <li>@item</li>
+        <li>@row</li>
     }
 </ol>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Backend3.Models;
+using System;
 
 namespace Backend3.Controllers
 {
@@ -7,11 +8,10 @@ namespace Backend3.Controllers
     {
         private static readonly Random rnd = new Random();
 
-        private QuizModel GenerateNext(QuizModel model)
+        private void GenerateNext(QuizModel model)
         {
             model.A = rnd.Next(1, 10);
             model.B = rnd.Next(1, 10);
-            return model;
         }
 
         public IActionResult Index()
@@ -19,11 +19,13 @@ namespace Backend3.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Quiz()
         {
             var model = new QuizModel
             {
-                Step = 1
+                Step = 1,
+                History = new List<string>()
             };
 
             GenerateNext(model);
@@ -33,32 +35,38 @@ namespace Backend3.Controllers
         [HttpPost]
         public IActionResult Quiz(QuizModel model, string action)
         {
+           
+            model.History ??= new List<string>();
+
+          
             if (!ModelState.IsValid)
+            {
                 return View(model);
+            }
 
-            
-            bool correct = model.UserAnswer == model.CorrectAnswer;
+          
+            bool isCorrect = model.UserAnswer == model.CorrectAnswer;
 
-            
+          
             model.History.Add($"{model.A} + {model.B} = {model.UserAnswer}");
 
-            if (correct)
+            if (isCorrect)
                 model.CorrectCount++;
 
-            
-            if (action == "finish" || model.Step >= 4)
-                return RedirectToAction("QuizResult", model);
-
            
+            if (action == "finish" || model.Step >= 4)
+            {
+                return View("QuizResult", model);
+            }
+
+          
             model.Step++;
-            model.UserAnswer = null;
-            GenerateNext(model);
+            model.UserAnswer = null;      
+            GenerateNext(model);       
 
-            return View(model);
-        }
+          
+            ModelState.Clear();
 
-        public IActionResult QuizResult(QuizModel model)
-        {
             return View(model);
         }
     }
