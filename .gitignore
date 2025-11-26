@@ -1,0 +1,20 @@
+# Ignore Visual Studio temporary files
+.vs/
+*.user
+*.suo
+*.swp
+*.vsidx
+
+# Build folders
+bin/
+obj/
+
+# Publish output
+publish/
+out/
+
+# Logs
+*.log
+
+# Backup files
+*~
