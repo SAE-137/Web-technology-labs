@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Магический Фокус</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body onclick="liftCurtain()">
-  <div class="curtain"></div>
-  <div class="lamp" onmousedown="toggleSwitch(true)" onmouseup="toggleSwitch(false)" onclick="toggleLight(event)"></div>
-  <div class="light"></div>
-  <div class="hat">
-    <div class="rabbit" onclick="switchCharacters(event)"></div>
-    <div class="dove" onclick="switchCharacters(event)"></div>
-  </div>
-  <img src="волшебник.png" alt="Волшебник" class="magician">
-  <script src="script.js"></script>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Task 10</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+		<img src="wizard.jpg" id="wizard">
+		<img src="hat.png" id="hat">
+		<img src="bird.png" id="thing" style="bottom: 30vh;">
+		<div id="thingEmpty" onclick="trick()"></div>
+		
+		<img src="lamp.jpg" id="lamp">
+		
+		<div id="light" style="opacity: 0;"></div>
+		
+		<img src="lamp_disperial.png" id="lampDisperial" onmousedown="switchLamp(200, 3, 0.5)" onmouseup="switchLamp(200, -3, 0)">
+		<img src="lamp_rope.png" id="lampRope">
+		
+        <img src="veil.jpg" id="veil" onclick="changeBottom(101, 1000, 'veil')" onmouseover="changeBottom(5, 200, 'veil')" onmouseout="changeBottom(0, 200, 'veil')">
+
+		<script src="scripts.js"></script>
+    </body>
 </html>

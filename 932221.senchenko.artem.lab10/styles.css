@@ -1,138 +1,142 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*
+{
+	margin: 0px;	
+	overflow: hidden;
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  background-color: #000;
+body{
+    background-color: black;
 }
 
-.curtain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('занавес.png') no-repeat center bottom;
-  background-size: cover;
-  transition: transform 0.2s ease, transform 1s ease;
-  z-index: 20; /* Кулисы поверх всех объектов */
+#veil
+{
+    position: fixed;
+	bottom: 0vh;
+	
+	height: 100vh;
+    width: auto;
+	
+	left: 50%;
+	transform: translate(-50%, 0%);
+	
+	z-index: 10;
 }
 
-.curtain:hover {
-  transform: translateY(-5%);
+#wizard
+{
+	position: fixed;
+	
+	height: 25vh;
+    width: auto;
+	
+	bottom: 5vh;
+	left: 50%;
+	transform: translate(-100%, 0%);
+	opacity: 0;
+	
+	z-index: 1;
 }
 
-.curtain.lifted {
-  transform: translateY(-100%);
+#hat
+{
+	position: fixed;
+	
+	height: 16vh;
+    width: auto;
+
+	rotate: 180deg;
+	
+	bottom: 10vh;
+	left: 47%;
+	transform: translate(-10%, 0%);
+	opacity: 0;
+	
+	z-index: 1;
 }
 
-.lamp {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 150px;
-  background: url('лампа.png') no-repeat center;
-  background-size: contain;
-  z-index: 10;
-  opacity: 0; /* Скрыт до поднятия кулис */
+#thing
+{
+	position: fixed;
+	
+	height: 8vh;
+    width: auto;
+	
+	left: 50%;
+	transform: translate(60%, 0%);
+	opacity: 0;
+	
+	z-index: 0;
 }
 
-.lamp.switched {
-  background: url('лампа.png') no-repeat center;
-  background-size: contain;
-  transition: background-image 0.1s ease;
+#thingEmpty
+{
+	position: fixed;
+	
+	height: 10vh;
+    width: 12vh;
+	
+	bottom: 30vh;
+	left: 50%;
+	transform: translate(50%, 0%);
+	
+	z-index: 5;
 }
 
-.light {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 200px solid transparent;
-  border-right: 200px solid transparent;
-  border-bottom: 300px solid rgba(255, 255, 0, 0.5);
-  opacity: 0;
-  z-index: 5;
-  transition: opacity 0.2s ease;
+#lamp
+{
+	position: fixed;
+	
+	height: 30vh;
+    width: auto;
+	
+	top: 0px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	
+	z-index: 1;
 }
 
-.light.on {
-  opacity: 0.5;
-  pointer-events: none;
+#lampRope
+{
+	position: fixed;
+	
+	height: 30vh;
+    width: auto;
+	
+	top: 0px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	
+	z-index: 2;
 }
 
-.hat {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 100px;
-  background: url('шляпа.png') no-repeat center;
-  background-size: contain;
-  opacity: 0; /* Скрыт до поднятия кулис */
-  z-index: 10;
-  transition: opacity 0.2s ease;
+#lampDisperial
+{
+	position: fixed;
+	
+	height: 30vh;
+    width: auto;
+	
+	top: 0px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	
+	z-index: 4;
 }
 
-.hat.visible {
-  opacity: 1;
-}
-
-.rabbit, .dove {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 100px;
-  background-size: contain;
-  transition: transform 0.5s ease, opacity 0.2s ease;
-  opacity: 0; /* Скрыт до поднятия кулис */
-}
-
-.rabbit {
-  background: url('кролик.png') no-repeat center;
-  transform: translateX(-50%) translateY(0);
-}
-
-.rabbit.hidden {
-  transform: translateX(-50%) translateY(100px);
-  opacity: 0;
-}
-
-.dove {
-  background: url('голубь.png') no-repeat center;
-  transform: translateX(-50%) translateY(100px);
-}
-
-.dove.visible {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
-}
-
-.dove.hidden {
-  transform: translateX(-50%) translateY(100px);
-  opacity: 0;
-}
-
-.magician {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 120px;
-  height: 200px;
-  background: url('волшебник.png') no-repeat center;
-  background-size: contain;
-  z-index: 15;
-  opacity: 0; /* Скрыт до поднятия кулис */
+#light
+{
+	position: fixed;
+	
+	height: 10vh;
+    width: 5vh;
+	
+	top: 0px;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	
+	border: 40vh solid transparent; 
+	border-bottom: 90vh solid yellow;
+		
+	z-index: 3;
 }

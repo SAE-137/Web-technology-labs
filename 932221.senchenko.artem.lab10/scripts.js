@@ -1,75 +1,135 @@
-let curtainLifted = false;
-let lightOn = false;
-let isRabbitVisible = true;
+let frameTime = 20;
 
-function liftCurtain() {
-  if (!curtainLifted) {
-    const curtain = document.querySelector('.curtain');
-    const lamp = document.querySelector('.lamp');
-    const light = document.querySelector('.light');
-    const hat = document.querySelector('.hat');
-    const rabbit = document.querySelector('.rabbit');
-    const dove = document.querySelector('.dove');
-    const magician = document.querySelector('.magician');
-    curtain.classList.add('lifted');
-    curtainLifted = true;
-    // Показываем объекты после поднятия кулис
-    lamp.style.opacity = '1';
-    light.style.opacity = '0'; // Свет выключен по умолчанию
-    hat.style.opacity = '0'; // Шляпа видна только при свете
-    rabbit.style.opacity = '0';
-    dove.style.opacity = '0';
-    magician.style.opacity = '1';
-  }
+let objectMoving = false;
+function changeBottom(newHeight, allTime, idElem)
+{
+	if (objectMoving)
+		return;
+	objectMoving = true;
+	
+	let elem = document.getElementById(idElem);
+	let start = Date.now();
+	let heightVeilStr = elem.style.bottom;
+	let heightVeilNum;
+	console.log(heightVeilStr);
+	if (heightVeilStr.length == 0)
+		heightVeilNum = 0;
+	else
+	{
+		heightVeilStr.replace('vh', '');
+		heightVeilNum = parseInt(heightVeilStr);
+	}
+	let heightForUp = newHeight - heightVeilNum;
+	let countFrame = allTime / frameTime;
+	let stepHeight = heightForUp / countFrame;
+	
+	let counterFrame = 0;
+	let timer = setInterval(function() 
+	{
+		heightVeilNum += stepHeight;
+ 		elem.style.bottom = heightVeilNum + 'vh';
+		
+		counterFrame++;
+		if (counterFrame >= countFrame) 
+		{
+			clearInterval(timer);
+			objectMoving = false;
+			return;
+		}
+	}, frameTime);
 }
 
-function toggleSwitch(down) {
-  const lamp = document.querySelector('.lamp');
-  if (down) {
-    lamp.classList.add('switched');
-  } else {
-    lamp.classList.remove('switched');
-  }
+let statusLamp = false;
+function switchLamp(time, ropeHeight, opacityLight)
+{
+	let lampElem = document.getElementById("lampRope");
+	let lightElem = document.getElementById("light");
+	let wizardElem = document.getElementById("wizard");
+	let hatElem = document.getElementById("hat");
+	let thingElem = document.getElementById("thing");
+	
+	let start = Date.now();
+	
+	let countFrame = time / frameTime;
+	let stepHeight = ropeHeight / countFrame;	
+	let stepLight = opacityLight / countFrame;
+	let stepOpacityObject = 0;
+	if (opacityLight != 0)
+		stepOpacityObject = 1 / countFrame;
+	if (statusLamp)
+	{
+		stepLight *= -1;
+		stepOpacityObject *= -1;
+	}
+	
+	
+	let counterFrame = 0;
+	let timer = setInterval(function() 
+	{
+ 		addTop(lampElem, stepHeight);	
+		addOpacity(lightElem, stepLight);
+		addOpacity(wizardElem, stepOpacityObject);
+		addOpacity(hatElem, stepOpacityObject);
+		addOpacity(thingElem, stepOpacityObject);
+		counterFrame++;
+		
+		if (counterFrame >= countFrame) 
+		{
+			clearInterval(timer);
+			return;
+		}
+	}, frameTime);
+	
+	if (opacityLight != 0)
+		statusLamp = !statusLamp;
 }
 
-function toggleLight(event) {
-  event.stopPropagation(); // Предотвращаем повторный вызов liftCurtain
-  if (curtainLifted) {
-    const light = document.querySelector('.light');
-    const hat = document.querySelector('.hat');
-    const rabbit = document.querySelector('.rabbit');
-    const dove = document.querySelector('.dove');
-    lightOn = !lightOn;
-    light.classList.toggle('on');
-    hat.classList.toggle('visible');
-    if (lightOn) {
-      rabbit.style.opacity = isRabbitVisible ? '1' : '0';
-      dove.style.opacity = !isRabbitVisible ? '1' : '0';
-    } else {
-      rabbit.style.opacity = '0';
-      dove.style.opacity = '0';
-    }
-  }
+function addOpacity(elem, num)
+{
+	let opacityStr = elem.style.opacity;
+	let opacityNum = 0;
+	if (opacityStr.length != 0)
+	{
+		opacityNum = parseFloat(opacityStr);
+	}	
+	opacityNum += num;
+	
+	elem.style.opacity = opacityNum;
 }
 
-function switchCharacters(event) {
-  event.stopPropagation(); // Предотвращаем повторный вызов liftCurtain
-  if (lightOn && curtainLifted) {
-    const rabbit = document.querySelector('.rabbit');
-    const dove = document.querySelector('.dove');
+function addTop(elem, num)
+{
+	let topStr = elem.style.top;
+	let topNum = 0;
+	if (topStr.length != 0)
+	{
+		topStr.replace('vh', '');
+		topNum = parseFloat(topStr);
+	}
+	topNum += num;
+ 	elem.style.top = topNum + 'vh';
+}
 
-    if (isRabbitVisible) {
-      rabbit.classList.add('hidden');
-      setTimeout(() => {
-        dove.classList.add('visible');
-      }, 500);
-    } else {
-      dove.classList.add('hidden');
-      setTimeout(() => {
-        rabbit.classList.remove('hidden');
-      }, 500);
-    }
-    isRabbitVisible = !isRabbitVisible;
-    toggleLight(event); // Обновляем видимость после переключения
-  }
+let isRabbit = false;
+let trickGoingOn = false;
+function trick()
+{
+	if (trickGoingOn)
+		return;
+		
+	trickGoingOn = true;
+	changeBottom(12, 200, 'thing');
+	
+	setTimeout(function()
+	{
+		if (isRabbit)
+			document.getElementById('thing').src = "bird.png";
+		else
+			document.getElementById('thing').src = "rabbit.png";	
+			
+		isRabbit = !isRabbit;
+		changeBottom(30, 200, 'thing');	
+		
+		trickGoingOn = false;
+	}, 300);
 }

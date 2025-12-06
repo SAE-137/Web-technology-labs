@@ -1,64 +1,120 @@
-document.getElementById("addBtn").addEventListener("click", () => addRow());
-document.getElementById("saveBtn").addEventListener("click", saveData);
+const items = new Map();
+let counter = 0;
 
-function addRow(text = "", number = "") {
-  const container = document.getElementById("list");
+function render() {
+    const container = document.getElementById('itemsContainer');
+    if (!container) return;
+    container.innerHTML = '';
 
-  const row = document.createElement("div");
-  row.className = "row";
-
-  const textInput = document.createElement("input");
-  textInput.type = "text";
-  textInput.value = text;
-  textInput.placeholder = "Текст";
-
-  const numInput = document.createElement("input");
-  numInput.type = "number";
-  numInput.value = number;
-  numInput.placeholder = "Число";
-
-  const upBtn = document.createElement("button");
-  upBtn.textContent = "↑";
-  upBtn.title = "Переместить вверх";
-  upBtn.onclick = () => moveRow(row, -1);
-
-  const downBtn = document.createElement("button");
-  downBtn.textContent = "↓";
-  downBtn.title = "Переместить вниз";
-  downBtn.onclick = () => moveRow(row, 1);
-
-  const delBtn = document.createElement("button");
-  delBtn.textContent = "×";
-  delBtn.title = "Удалить";
-  delBtn.onclick = () => row.remove();
-
-  row.append(textInput, numInput, upBtn, downBtn, delBtn);
-  container.appendChild(row);
+    items.forEach((value, id) => {
+        const itemElement = createItemElement(id, value.key, value.value);
+        container.appendChild(itemElement);
+    });
 }
 
-function moveRow(row, dir) {
-  const parent = row.parentElement;
-  const rows = [...parent.children];
-  const index = rows.indexOf(row);
-  const target = index + dir;
+function createItemElement(id, key, value) {
+    const itemDiv = document.createElement('div');
 
-  if (target < 0 || target >= rows.length) return;
-  if (dir === -1) parent.insertBefore(row, rows[target]);
-  else parent.insertBefore(rows[target], row);
+    const keyInput = createInput(id, key, 'key');
+    const valueInput = createInput(id, value, 'value');
+
+    const moveUpButton = createButton('↑', () => moveUp(id));
+    const moveDownButton = createButton('↓', () => moveDown(id));
+    const deleteButton = createButton('×', () => deleteItem(id));
+
+    itemDiv.append(keyInput, valueInput, moveUpButton, moveDownButton, deleteButton);
+    return itemDiv;
 }
 
-function saveData() {
-  const rows = document.querySelectorAll("#list .row");
-  const result = {};
-
-  rows.forEach(r => {
-    const key = r.querySelector('input[type="text"]').value.trim();
-    const value = r.querySelector('input[type="number"]').value.trim();
-    if (key) result[key] = value;
-  });
-
-  const output = document.getElementById("output");
-  output.textContent = JSON.stringify(result, null, 2);
+function createInput(id, value, type) {
+    const input = document.createElement('input');
+    input.value = value;
+    input.addEventListener('change', () => editItem(id, input.value, type));
+    return input;
 }
 
-addRow();
+function createButton(text, onClick) {
+    const button = document.createElement('button');
+    button.textContent = text;
+    button.addEventListener('click', onClick);
+    return button;
+}
+
+function addItem() {
+    items.set(counter, { key: '', value: '' });
+    counter++;
+    render();
+}
+
+function editItem(id, newValue, type) {
+    if (items.has(id)) {
+        const currentItem = items.get(id);
+        if (type === 'key') {
+            currentItem.key = newValue;
+        } else if (type === 'value') {
+            currentItem.value = newValue;
+        }
+        items.set(id, currentItem);
+    }
+}
+
+function deleteItem(id) {
+    if (items.has(id)) {
+        items.delete(id);
+        render();
+    }
+}
+
+function moveUp(id) {
+    const keys = Array.from(items.keys());
+    const index = keys.indexOf(id);
+
+    if (index > 0) {
+        const previousId = keys[index - 1];
+        const currentItem = items.get(id);
+        const previousItem = items.get(previousId);
+
+        items.set(id, previousItem);
+        items.set(previousId, currentItem);
+
+        render();
+    }
+}
+
+function moveDown(id) {
+    const keys = Array.from(items.keys());
+    const index = keys.indexOf(id);
+
+    if (index !== -1 && index < keys.length - 1) {
+        const nextId = keys[index + 1];
+        const currentItem = items.get(id);
+        const nextItem = items.get(nextId);
+
+        items.set(id, nextItem);
+        items.set(nextId, currentItem);
+
+        render();
+    }
+}
+
+function printItems() {
+    const resultContainer = document.getElementById('result');
+    if (!resultContainer) return;
+
+    const result = [];
+    items.forEach((value, id) => {
+        result.push(`"${value.key}": "${value.value}"`);
+    });
+
+    resultContainer.textContent = `{ ${result.join(', ')} }`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addButton = document.getElementById('addButton');
+    const saveButton = document.getElementById('saveButton');
+
+    if (addButton) addButton.addEventListener('click', addItem);
+    if (saveButton) saveButton.addEventListener('click', printItems);
+});
+
+render();
